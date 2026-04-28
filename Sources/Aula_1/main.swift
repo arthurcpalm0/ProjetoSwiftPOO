@@ -14,30 +14,58 @@ enum AulasOferecidas : String{
     case funcional = "funcional"
 }
 
-class Plano{
-    private var nome: String
-    private var valormensal: Int
-    private var personalTrainer: Bool
-    private var limAulas: Int
-    private var duracao: Int
-    init (nome: String, valormensal: Int, personalTrainer: Bool, limAulas: Int, duracao: Int){
+struct PlanosConfig{
+    let nome: String
+    let valormensal: Double
+    let personalTrainer: Bool
+    let limAulas: Int
+    let duracao: Int
+}
+
+enum CatalogoPlanos{
+    case mensal
+    case trimestral 
+    case anual
+
+    private var atributos: PlanosConfig{
+        switch self{
+            case .mensal: return PlanosConfig(nome: "Mensal Simples", valormensal: 100, personalTrainer: false, limAulas: 10, duracao: 2)
+            case .trimestral: return PlanosConfig (nome: "Trimestral Premium", valormensal: 200, personalTrainer: true, limAulas: 20, duracao: 6)
+            case .anual: return PlanosConfig (nome: "Anual VIP", valormensal: 300, personalTrainer: true, limAulas: 30, duracao: 24)
+        }
+    }
+}
+
+class Pessoa{
+    private let nome: String
+    private let email: String
+    private let funcao: String
+
+    init(nome: String, email: String, funcao: String){
         self.nome = nome
-        self.valormensal = valormensal
-        self.personalTrainer = personalTrainer
-        self.limAulas = limAulas
-        self.duracao = duracao
+        self.email = email
+        self.funcao = funcao
     }
 
-    static var mensal: Plano {
-        return Plano(nome: "Plano Mensal", preco: 29.90, periodicidade: "Mensal")
-    }
+}
 
-    static var trimestral: Plano {
-        return Plano(nome: "Plano Trimestral", preco: 79.90, periodicidade: "Trimestral")
+class Aluno: Pessoa{
+    private let matricula: String
+    private var plano: CatalogoPlanos
+    private var nivel: NivelExperiencia
+    init(nome: String, email: String, funcao: String, matricula: String, plano: CatalogoPlanos, nivel: NivelExperiencia){
+        self.matricula = matricula
+        self.plano = plano
+        self.nivel = nivel
+        super.init(nome: nome, email: email, funcao: "Aluno")
     }
+}
 
-    static var anual: Plano {
-        return Plano(nome: "Plano Anual", preco: 249.90, periodicidade: "Anual")
+class Instrutor: Pessoa{
+    private let especialidade: AulasOferecidas
+    init(nome: String, email: String, funcao: String, especialidade: AulasOferecidas){
+        self.especialidade = especialidade
+        super.init(nome: nome, email: email, funcao: "Instrutor")
     }
 }
 
