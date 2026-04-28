@@ -1,3 +1,10 @@
 import Foundation
 
-print("Aula 2 de Swift!!")
+protocol Manutencao{
+    var nomeItem: String
+    var historico: String
+}
+
+class Equipamento{
+
+}
