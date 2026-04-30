@@ -63,8 +63,10 @@ class Aluno: Pessoa{
 
 class Instrutor: Pessoa{
     let especialidade: AulasOferecidas
-    init(nome: String, email: String, funcao: String, especialidade: AulasOferecidas){
+    let idFuncionario: String
+    init(nome: String, email: String, funcao: String, especialidade: AulasOferecidas, idFuncionario: String){
         self.especialidade = especialidade
+        self.idFuncionario = idFuncionario
         super.init(nome: nome, email: email, funcao: "Instrutor")
     }
 }
