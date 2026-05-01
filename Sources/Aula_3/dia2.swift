@@ -9,7 +9,7 @@ protocol Manutencao{
 }
 
 class Aparelho: Manutencao{
-    var nomeMaquina: String
+    let nomeMaquina: String
     private (set) var historicoMaquina: [String] = []
 
     init (nomeMaquina: String){
@@ -78,11 +78,13 @@ class TreinoComPersonal: Aula{
     let instrutor: String
     let categoria: String
     let descricao: String
+    let matriculaAluno: String
 
-    init (nome: String, instrutor: String, categoria: String, descricao: String){
+    init (nome: String, instrutor: String, categoria: String, descricao: String, matriculaAluno: String){
         self.nome = nome
         self.instrutor = instrutor
         self.categoria = categoria
         self.descricao = descricao
+        self.matriculaAluno = matriculaAluno
     }
 }

@@ -9,7 +9,7 @@ protocol Manutencao{
 }
 
 class Aparelho: Manutencao{
-    var nomeMaquina: String
+    let nomeMaquina: String
     private (set) var historicoMaquina: [String] = []
 
     init (nomeMaquina: String){
